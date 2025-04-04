@@ -13,3 +13,5 @@ ETL pipeline analyzing PlayStation Portable game sales using:
 ## Data Sources
 - VGChartz (sales data)
 - Metacritic (ratings)
+
+### Project by Asong Morfaw

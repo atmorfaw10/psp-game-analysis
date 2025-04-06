@@ -33,7 +33,7 @@ erDiagram
     GAMES ||--o{ SALES : "1-to-many"
     GAMES ||--o{ RATINGS : "1-to-many"
     GAMES ||--|| HARDWARE : "platform"
-    
+
     GAMES {
         varchar(20) game_id PK
         text title
@@ -42,26 +42,26 @@ erDiagram
         varchar(50) genre
         text developer
     }
-    
+
     SALES {
         serial sale_id PK
         varchar(20) game_id FK
-        numeric(5,2) na_sales "in millions"
-        numeric(5,2) eu_sales
-        numeric(5,2) jp_sales
+        decimal na_sales
+        decimal eu_sales
+        decimal jp_sales
         integer year
     }
-    
+
     RATINGS {
         serial rating_id PK
         varchar(20) game_id FK
-        numeric(3,1) metacritic_score
-        numeric(2,1) user_score
+        decimal metacritic_score
+        decimal user_score
     }
-    
+
     HARDWARE {
         varchar(3) platform PK "PSP|DS"
-        numeric(5,2) launch_price_usd
+        decimal launch_price_usd
         integer battery_life_hours
         varchar(10) media_type "UMD|Cartridge"
     }

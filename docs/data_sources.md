@@ -26,38 +26,44 @@
 	-  Missing PSN data: PSN data is unavailable
 
 
+
 ## Database Schema (PostgreSQL)
 ```mermaid
 erDiagram
     GAMES ||--o{ SALES : "1-to-many"
     GAMES ||--o{ RATINGS : "1-to-many"
+    GAMES ||--|| HARDWARE : "platform"
+    
     GAMES {
-	varchar(20) game_id PK
-	text title
-	varchar(3) platform "PSP|DS"
-	date release_date
-	varchar(50) genre
-	text developer
+        varchar(20) game_id PK
+        text title
+        varchar(3) platform FK "PSP|DS"
+        date release_date
+        varchar(50) genre
+        text developer
     }
+    
     SALES {
-	serial sale_id PK
-	varchar(20) game_id FK
-	numeric(5,2) na_sales
-	numeric(5,2) eu_sales
-	numeric(5,2) jp_sales
-	integer year
+        serial sale_id PK
+        varchar(20) game_id FK
+        numeric(5,2) na_sales "in millions"
+        numeric(5,2) eu_sales
+        numeric(5,2) jp_sales
+        integer year
     }
+    
     RATINGS {
-	serial rating_id PK
-	varchar(20) game_id FK
-	numeric(3,1) metacritic_score
-	numeric(2,1) user_score
+        serial rating_id PK
+        varchar(20) game_id FK
+        numeric(3,1) metacritic_score
+        numeric(2,1) user_score
     }
+    
     HARDWARE {
-	varchar(3) platform PK "PSP|DS"
-	numeric(5,2) launch_price_usd
-	integer battery_life_hours
-	varchar(10) media_type "UMD|Cartridge"
+        varchar(3) platform PK "PSP|DS"
+        numeric(5,2) launch_price_usd
+        integer battery_life_hours
+        varchar(10) media_type "UMD|Cartridge"
     }
 ```
 

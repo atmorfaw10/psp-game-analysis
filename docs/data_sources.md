@@ -42,7 +42,7 @@ erDiagram
     SALES {
 	serial sale_id PK
 	varchar(20) game_id FK
-	numeric(5,2) na_sales "millions"
+	numeric(5,2) na_sales
 	numeric(5,2) eu_sales
 	numeric(5,2) jp_sales
 	integer year
